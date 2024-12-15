@@ -104,10 +104,10 @@
           <h1>Продукты</h1>
       </div>
       <div class="header-buttons" style="width: 180px;">
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/shop/';" title="Назад."></button>
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';" title="Главная страница."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://176.124.214.97:8000/shop/';" title="Назад."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://176.124.214.97:8000/';" title="Главная страница."></button>
         {% if perms.shopapp.add_product %}
-          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-create" onclick="window.location.href = 'http://127.0.0.1:8000/shop/products/create/';" title="Создать продукт."></button>
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-create" onclick="window.location.href = 'http://176.124.214.97:8000/shop/products/create/';" title="Создать продукт."></button>
         {% else %}
         <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-create" onclick="alert('Отказано в доступе!')" title="Создать продукт."></button>
         {% endif %}

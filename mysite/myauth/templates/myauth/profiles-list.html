@@ -154,8 +154,8 @@
           <h1>Пользователи</h1>
       </div>
       <div class="header-buttons" style="width: 140px;">
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/';" title="Назад."></button>
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';" title="Главная страница."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://176.124.214.97:8000/accounts/';" title="Назад."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://176.124.214.97:8000/';" title="Главная страница."></button>
       </div>
   </div>
 </div>
@@ -175,7 +175,7 @@
             {% firstof profile.user.firstname profile.user.username %}
         </div>
         <div style="width: 180px;">
-          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-check-profile" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/profiles/{{ profile.pk }}/info/';" title="Посмотреть профиль."></button>
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-check-profile" onclick="window.location.href = 'http://176.124.214.97:8000/accounts/profiles/{{ profile.pk }}/info/';" title="Посмотреть профиль."></button>
         </div>
       </div>
       {% endif %}

@@ -121,17 +121,17 @@
           <h3><a href="{% url 'myauth:about-me' %}">{{ user.username }}</a></h3>
         {% else %}
           <img src="https://img.icons8.com/?size=100&id=23265&format=png&color=000000" alt="ERROR" class="mini-avatar">
-          <h3><a href="http://127.0.0.1:8000/accounts/registration/">Anonim</a></h3>
+          <h3><a href="http://176.124.214.97:8000/accounts/registration/">Anonim</a></h3>
         {% endif %}
       </div>
       <div class="index">
           <h1>Просмотр профиля</h1>
       </div>
       <div class="header-buttons" style="width: 180px;">
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/profiles/';" title="Назад."></button>
-        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';" title="Главная страница."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://176.124.214.97:8000/accounts/profiles/';" title="Назад."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://176.124.214.97:8000/';" title="Главная страница."></button>
         {% if user.is_staff %}
-          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-edit" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/profiles/{{ profile.pk }}/info/update/';" title="Update."></button>
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-edit" onclick="window.location.href = 'http://176.124.214.97:8000/accounts/profiles/{{ profile.pk }}/info/update/';" title="Update."></button>
         {% else %}
           <div style="width: 50px; height: 50px;"></div>
         {% endif %}
@@ -160,7 +160,7 @@
       <p><textarea cols="100" rows="5" readonly="on">{% firstof profile.bio 'Пусто' %}</textarea></p>
     </div>
   {% else %}
-    <h2>Аннонимным пользователям не доступен профиль. Зарегистрируйтесь по ссылке <a href="http://127.0.0.1:8000/accounts/registration/">регистрация.</a></h2>
+    <h2>Аннонимным пользователям не доступен профиль. Зарегистрируйтесь по ссылке <a href="http://176.124.214.97:8000/accounts/registration/">регистрация.</a></h2>
   {% endif %}
 </div>
 <hr>

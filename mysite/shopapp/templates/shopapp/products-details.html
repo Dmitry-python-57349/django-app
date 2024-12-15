@@ -109,8 +109,8 @@
             <h1>Продукт <strong>{{ product.name }}</strong></h1>
         </div>
         <div class="header-buttons" style="width: 140px;">
-            <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/shop/products/';" title="Назад."></button>
-            <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';"></button>
+            <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://176.124.214.97:8000/shop/products/';" title="Назад."></button>
+            <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://176.124.214.97:8000/';"></button>
         </div>
     </div>
 </div>
@@ -125,11 +125,11 @@
   <div class="flexed-container">
       <div class="product-buttons">
         {% if user.username == product.created_by.username and perms.shopapp.change_product %}
-            <button style="width: 100px; height: 100px; background-size: 75%;" class="button-img button-update" onclick="window.location.href = 'http://127.0.0.1:8000/shop/products/{{ product.pk }}/update/';" title="Обновить запись."></button>
+            <button style="width: 100px; height: 100px; background-size: 75%;" class="button-img button-update" onclick="window.location.href = 'http://176.124.214.97:8000/shop/products/{{ product.pk }}/update/';" title="Обновить запись."></button>
         {% else %}
             <button style="width: 100px; height: 100px; background-size: 75%;" class="button-img button-update" onclick="alert('Отказано в доступе!')" title="Обновить запись."></button>
         {% endif %}
-        <button style="width: 100px; height: 100px; background-size: 75%;" class="button-img button-delete" onclick="window.location.href = 'http://127.0.0.1:8000/shop/products/{{ product.pk }}/archive/';" title="Удалить запись."></button>
+        <button style="width: 100px; height: 100px; background-size: 75%;" class="button-img button-delete" onclick="window.location.href = 'http://176.124.214.97:8000/shop/products/{{ product.pk }}/archive/';" title="Удалить запись."></button>
       </div>
   </div>
 </div>
