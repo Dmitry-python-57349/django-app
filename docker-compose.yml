@@ -12,6 +12,6 @@ services:
     environment:
       - DOCKER_RUNTIME=1
     volumes:
-      - ./mysite/uploads:/app/mysite/uploads
+      - ./mysite/uploads:/app/django-app/mysite/uploads
     ports:
       - "8000:8000"
