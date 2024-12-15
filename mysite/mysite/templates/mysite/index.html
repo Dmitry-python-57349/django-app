@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        * {
+            color: white;
+            background-color: rgb(45, 0, 71);
+        }
+        
+        .index {
+            text-align: center;
+        }
+
+        .flexed-container {
+            max-width: 1000px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-block {
+            margin: 50px auto;
+        }
+
+        .button-block > div {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .button-img {
+            background-repeat: no-repeat;
+            background-position-x: center;
+            background-position-y: center;
+        }
+
+        .button-admin {
+            background-image: url('https://img.icons8.com/?size=100&id=52232&format=png&color=000000'); 
+        }
+
+        .button-shopapp {
+            background-image: url('https://img.icons8.com/?size=100&id=7621&format=png&color=000000'); 
+        }
+
+        .button-accounts {
+            background-image: url('https://img.icons8.com/?size=100&id=7819&format=png&color=000000'); 
+        }
+
+        button {
+            font-size: 125%;
+            border-radius: 25px;
+            height: 160px;
+            width: 200px;
+            background-color: rgb(80, 0, 126);
+        }
+
+        button:hover {
+            background-color: rgb(0, 94, 94);
+            color: red;
+        }
+
+        button:focus {
+            background-color: rgb(0, 94, 94);
+            color: rgb(139, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="flexed-container index">
+        <h1>Главная страница</h1>
+    </div>
+    <hr>
+    <div class="button-block">
+        <div class="flexed-container">
+            <div>
+                <button class="button-img button-admin" onclick="window.location.href = 'http://127.0.0.1:8000/admin/';">
+                    Админка
+                </button>
+            </div>
+            <div>
+                <button class="button-img button-shopapp" onclick="window.location.href = 'http://127.0.0.1:8000/shop/';">
+                    Магазин
+                </button>
+            </div>
+            <div>
+                <button class="button-img button-accounts" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/';">
+                    Аккаунт
+                </button> 
+            </div>
+        </div>  
+    </div>
+    <hr>
+</body>
+</html>

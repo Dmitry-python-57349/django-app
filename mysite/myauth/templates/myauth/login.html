@@ -1,0 +1,141 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block style %}
+    * {          
+        color: white;
+        background-color: rgb(45, 0, 71);
+    }
+
+    .index {
+        text-align: center;
+    }
+
+    .custom-header > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header-buttons {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 140px;
+    }
+
+    .flexed-container {
+        max-width: 1000px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .flexed-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-img {
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+    }
+
+    .button-home {
+        background-image: url('https://img.icons8.com/?size=100&id=qBlNlefkEJPq&format=png&color=000000'); 
+    }
+
+    .button-back {
+        background-image: url('https://img.icons8.com/?size=100&id=98961&format=png&color=000000'); 
+    }
+
+    button {
+        font-size: 125%;
+        border-radius: 25px;
+        height: 160px;
+        width: 200px;
+        background-color: rgb(80, 0, 126);
+    }
+
+    button:hover {
+        background-color: rgb(0, 94, 94);
+        color: red;
+    }
+
+    button:focus {
+        background-color: rgb(0, 94, 94);
+        color: rgb(139, 0, 0);
+    }
+
+    .custom-form {
+        border-radius: 15px;
+        border: 2px solid;
+    }
+
+    .flexed-container > custom-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom-form > div {
+        margin: 30px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .form-div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .blank-div {
+        margin-left: 10%;
+    }
+{% endblock %}
+
+{% block body %}
+<div class="custom-header">
+    <div class="flexed-container">
+        <div class="blank-div"></div>
+        <div class="index">
+            <h1>Вход</h1>
+        </div>
+        <div class="header-buttons">
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/';"></button>
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';"></button>
+        </div>
+    </div>
+</div>
+<hr>
+<div style="margin: 40px auto;">
+  <div class="flexed-container">
+        <form method="post" class="custom-form">
+            {% csrf_token %}
+
+            {% for elem in form %}
+                <div class="form-div">
+                    <label for="{{ elem }}">{{ elem.capitalize }} </label>
+                    {% if elem == "password" %}
+                        <input type="password" id="{{ elem }}" name="{{ elem }}">
+                    {% elif elem == "email" %}
+                        <input type="email" id="{{ elem }}" name="{{ elem }}">
+                    {% else %}
+                        <input type="text" id="{{ elem }}" name="{{ elem }}">
+                    {% endif %}    
+                </div>
+            {% endfor %}
+            <div class="form-div">
+                <input type="submit">
+            </div>
+        </form>
+    </div>  
+</div>
+<hr>
+
+
+{% endblock %}

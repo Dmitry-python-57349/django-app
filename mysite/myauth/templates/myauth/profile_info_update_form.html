@@ -1,0 +1,20 @@
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+  Update profile
+{% endblock %}
+
+{% block body %}
+  <h1>Update {{ profile.user.username }} form, by {{ user.username }}!</h1>
+  <div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <div>
+    <a href="http://127.0.0.1:8000/accounts/profiles/{{ profile.pk }}/info/"
+    >Back to {{ profile.user.username }} profile</a>
+  </div>
+{% endblock %}

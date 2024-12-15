@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  app:
+    build: dmitry0python/django_app
+    command: >
+      sh -c "
+        cd mysite
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+    container_name: django_app
+    environment:
+      - DOCKER_RUNTIME=1
+    volumes:
+      - ./mysite/uploads:/app/mysite/uploads
+    ports:
+      - "8000:8000"

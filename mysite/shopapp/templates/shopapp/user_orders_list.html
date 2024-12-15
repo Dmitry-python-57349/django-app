@@ -1,0 +1,143 @@
+{% extends 'shopapp/base.html' %}
+
+{% load cache %}
+
+{% block title %}
+  Orders list
+{% endblock %}
+
+{% block style %}
+  * {
+    color: white;
+    background-color: rgb(45, 0, 71);
+  }
+
+  .index {
+    text-align: center;
+  }
+
+  .flexed-container {
+    max-width: 1000px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-header > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .button-block {
+    margin: 20px auto;
+  }
+
+  .button-block > div {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .button-img {
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+  }
+
+  .button-back {
+    background-image: url('https://img.icons8.com/?size=100&id=98961&format=png&color=000000'); 
+  }
+
+  .button-home {
+    background-image: url('https://img.icons8.com/?size=100&id=qBlNlefkEJPq&format=png&color=000000'); 
+  }
+
+  .button-create {
+    background-image: url('https://img.icons8.com/?size=100&id=avvbNhAwFDaX&format=png&color=000000'); 
+  }
+
+  button {
+    font-size: 125%;
+    border-radius: 25px;
+    height: 160px;
+    width: 200px;
+    background-color: rgb(80, 0, 126);
+  }
+
+  button:hover {
+    background-color: rgb(0, 94, 94);
+    color: red;
+  }
+
+  button:focus {
+    background-color: rgb(0, 94, 94);
+    color: rgb(139, 0, 0);
+  }
+  
+  .order-case {
+    background-color: rgb(80, 0, 126);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px 0; 
+    width: 250px;
+  }
+
+  .order-case > p, p > a, ul, li {
+    background-color: rgb(80, 0, 126);
+  }
+
+  .blank-div {
+    margin-left: 15%;
+  }
+{% endblock %}
+{% block body %}
+<div class="custom-header">
+  <div class="flexed-container">
+      <div class="blank-div"></div>
+      <div class="index">
+          <h1>Orders for user {{ owner.username }}</h1>
+      </div>
+      <div class="header-buttons" style="width: 180px;">
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/shop/';" title="Назад."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';" title="Главная страница."></button>
+        {% if perms.shopapp.add_product %}
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-create" onclick="window.location.href = 'http://127.0.0.1:8000/shop/products/create/';" title="Создать продукт."></button>
+        {% else %}
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-create" onclick="alert('Отказано в доступе!')" title="Создать продукт."></button>
+        {% endif %}
+      </div>
+  </div>
+</div>
+<hr>
+<div class="button-block">
+  <div class="flexed-container">
+    {% if orders %}
+        {% for order in orders %}
+        <div class="order-case">
+            <p>Order №{{ order.pk }}</p>
+            <hr>
+            <p>delivery_address: {{ order.delivery_address }}</p>
+            <p>promocode: {{ order.promocode }}</p>
+            <p>created_at: {{ order.created_at }}</p>
+            <hr>
+            <p>products:</p>
+            <ul>
+                {% for product in order.products.all %}<li>{{ product.name }}</li>{% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    {% else %}
+      <h3>No orders yet</h3>
+    {% endif %}
+  </div>  
+</div>
+<hr>
+{% endblock %}

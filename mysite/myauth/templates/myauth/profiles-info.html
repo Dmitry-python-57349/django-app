@@ -1,0 +1,168 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Profile info
+{% endblock %}
+
+{% block style %}
+    * {
+      color: white;
+      background-color: rgb(45, 0, 71);
+    }
+
+    .index {
+      text-align: center;
+    }
+
+    .header-buttons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .flexed-container {
+      max-width: 1000px;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .custom-header > div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .button-img {
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-position-y: center;
+    }
+
+    .button-home {
+      background-image: url('https://img.icons8.com/?size=100&id=qBlNlefkEJPq&format=png&color=000000');
+    }
+
+    .button-logout {
+      background-image: url('https://img.icons8.com/?size=100&id=VTOU0AOwSnkY&format=png&color=000000');
+    }
+
+    .button-back {
+      background-image: url('https://img.icons8.com/?size=100&id=98961&format=png&color=000000');
+    }
+
+    .button-shop {
+      background-image: url('https://img.icons8.com/?size=100&id=7621&format=png&color=000000');
+    }
+
+    .button-edit {
+      background-image: url('https://img.icons8.com/?size=100&id=86374&format=png&color=000000');
+    }
+
+    button {
+      font-size: 125%;
+      border-radius: 25px;
+      height: 160px;
+      width: 200px;
+      background-color: rgb(80, 0, 126);
+    }
+
+    button:hover {
+      background-color: rgb(0, 94, 94);
+      color: red;
+    }
+
+    button:focus {
+      background-color: rgb(0, 94, 94);
+      color: rgb(139, 0, 0);
+    }
+
+    .profile {
+      font-size: 150%;
+    }
+
+    .blank-div {
+      margin-left: 5%;
+      width: 13%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(0, 94, 94);
+    }
+
+    a:active {
+        color: rgb(0, 66, 33);
+    }
+
+    .mini-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid;
+    }
+{% endblock %}
+
+{% block body %}
+<div class="custom-header">
+  <div class="flexed-container">
+      <div class="blank-div">
+        {% if user.is_authenticated %}
+          {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="ERROR" class="mini-avatar">
+          {% else %}
+            <img src="https://img.icons8.com/?size=100&id=23265&format=png&color=000000" alt="ERROR" class="mini-avatar">
+          {% endif %}
+          <h3><a href="{% url 'myauth:about-me' %}">{{ user.username }}</a></h3>
+        {% else %}
+          <img src="https://img.icons8.com/?size=100&id=23265&format=png&color=000000" alt="ERROR" class="mini-avatar">
+          <h3><a href="http://127.0.0.1:8000/accounts/registration/">Anonim</a></h3>
+        {% endif %}
+      </div>
+      <div class="index">
+          <h1>Просмотр профиля</h1>
+      </div>
+      <div class="header-buttons" style="width: 180px;">
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-back" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/profiles/';" title="Назад."></button>
+        <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-home" onclick="window.location.href = 'http://127.0.0.1:8000/';" title="Главная страница."></button>
+        {% if user.is_staff %}
+          <button style="width: 50px; height: 50px; background-size: 75%;" class="button-img button-edit" onclick="window.location.href = 'http://127.0.0.1:8000/accounts/profiles/{{ profile.pk }}/info/update/';" title="Update."></button>
+        {% else %}
+          <div style="width: 50px; height: 50px;"></div>
+        {% endif %}
+      </div>
+  </div>
+</div>
+<hr>
+<div class="flexed-container">
+  {% if user.is_authenticated %}
+    <h2>Информация о профиле:</h2>
+    <div class="profile">
+      <ul>
+        {% if profile.avatar %}
+            <li><img src="{{ profile.avatar.url }}" alt="{{ profile.avatar.name }}" width="200px" height="200px"></li>
+        {% else %}
+            <li><img src="https://img.icons8.com/?size=100&id=23265&format=png&color=000000" alt="ERROR"></li>
+        {% endif %}
+        <li>Юзер: {% firstof profile.user.username 'Пусто' %}</li>
+        <li>Имя: {% firstof profile.user.first_name 'Пусто' %}</li>
+        <li>Фамилия: {% firstof profile.user.last_name 'Пусто' %}</li>
+        <li>Email: {% firstof profile.user.email 'Пусто' %}</li>
+      </ul>
+    </div>
+    <div class="profile">
+      Биография:
+      <p><textarea cols="100" rows="5" readonly="on">{% firstof profile.bio 'Пусто' %}</textarea></p>
+    </div>
+  {% else %}
+    <h2>Аннонимным пользователям не доступен профиль. Зарегистрируйтесь по ссылке <a href="http://127.0.0.1:8000/accounts/registration/">регистрация.</a></h2>
+  {% endif %}
+</div>
+<hr>
+
+{% endblock %}
